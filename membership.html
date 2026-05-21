@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Membership — Vista Padel Club</title>
+  <meta name="description" content="Join Vista Padel Club as a member — unlock exclusive rates, priority booking, coaching packages and member-only perks."/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <style>
+    /* ── Membership-specific styles ── */
+    .mem-hero{padding:calc(var(--nav-h) + 64px) 0 72px;background:var(--black);text-align:center;position:relative;overflow:hidden}
+    .mem-hero::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(232,67,122,.12) 0%,transparent 70%);pointer-events:none}
+    .mem-hero::after{content:'';position:absolute;bottom:-80px;left:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(26,92,53,.18) 0%,transparent 70%);pointer-events:none}
+    .mem-hero h1{color:var(--white);margin-bottom:16px;position:relative}
+    .mem-hero p{color:rgba(255,255,255,.6);font-size:1.1rem;max-width:520px;margin:0 auto 36px;position:relative}
+    .mem-hero__stats{display:flex;justify-content:center;gap:48px;position:relative;flex-wrap:wrap}
+    .mem-hero__stat{text-align:center}
+    .mem-hero__stat-num{font-family:var(--font-head);font-size:2rem;font-weight:800;color:var(--white);line-height:1}
+    .mem-hero__stat-num span{color:var(--pink)}
+    .mem-hero__stat-label{font-size:.78rem;color:rgba(255,255,255,.45);margin-top:4px}
+
+    /* Compare table */
+    .compare-table{width:100%;border-collapse:collapse;margin-top:0}
+    .compare-table th,.compare-table td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--gray-200);font-size:.85rem}
+    .compare-table thead th{font-family:var(--font-head);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-400);background:var(--cream);padding:16px 18px}
+    .compare-table thead th:not(:first-child){text-align:center}
+    .compare-table td:not(:first-child){text-align:center}
+    .compare-table tbody tr:last-child td{border-bottom:none}
+    .compare-table tbody tr:hover{background:var(--gray-50)}
+    .compare-table .feat-col{font-weight:500;color:var(--black)}
+    .compare-table .feat-col small{display:block;font-weight:400;color:var(--gray-400);font-size:.75rem;margin-top:2px}
+    .check-yes{color:var(--green);font-size:1.1rem}
+    .check-no{color:var(--gray-300);font-size:1.1rem}
+    .check-val{font-family:var(--font-head);font-weight:700;color:var(--black);font-size:.85rem}
+    .compare-table .col-featured{background:rgba(0,0,0,.02);border-left:2px solid var(--pink);border-right:2px solid var(--pink)}
+    .compare-table thead .col-featured{border-top:2px solid var(--pink);background:var(--pink-light)}
+    .compare-table tbody tr:last-child .col-featured{border-bottom:2px solid var(--pink)}
+
+    /* FAQ */
+    .faq-item{border-bottom:1px solid var(--gray-200);padding:20px 0;cursor:pointer}
+    .faq-item:last-child{border-bottom:none}
+    .faq-q{display:flex;justify-content:space-between;align-items:center;gap:16px}
+    .faq-q-text{font-family:var(--font-head);font-size:.95rem;font-weight:700;color:var(--black)}
+    .faq-icon{font-size:1.3rem;color:var(--gray-400);transition:transform var(--t);flex-shrink:0;line-height:1}
+    .faq-item.open .faq-icon{transform:rotate(45deg);color:var(--black)}
+    .faq-a{display:none;padding-top:12px;font-size:.88rem;color:var(--gray-600);line-height:1.7}
+    .faq-item.open .faq-a{display:block}
+
+    /* Join form */
+    .join-form{background:var(--cream);border-radius:var(--r-xl);padding:40px;border:1px solid var(--gray-200)}
+    .join-form h3{margin-bottom:6px}
+    .join-form > p{font-size:.88rem;color:var(--gray-600);margin-bottom:28px}
+    .plan-selector{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+    .plan-opt{border:2px solid var(--gray-200);border-radius:var(--r-md);padding:16px;cursor:pointer;transition:var(--t);text-align:center}
+    .plan-opt:hover{border-color:var(--green)}
+    .plan-opt.selected{border-color:var(--green);background:var(--green-light)}
+    .plan-opt__name{font-family:var(--font-head);font-size:.85rem;font-weight:700;color:var(--black)}
+    .plan-opt__price{font-size:.78rem;color:var(--gray-400);margin-top:3px}
+    @media(max-width:600px){.plan-selector{grid-template-columns:1fr}.mem-hero__stats{gap:28px}.compare-table th,.compare-table td{padding:10px 12px;font-size:.78rem}.join-form{padding:24px}}
+  </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav class="navbar">
+  <div class="navbar__inner">
+    <a href="index.html" class="navbar__logo"><span class="navbar__logo-dot"></span>Vista Padel Club</a>
+    <div class="navbar__links">
+      <a href="index.html">Home</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="coaching.html">Coaching</a>
+      <a href="facilities.html">Facilities</a>
+      <a href="membership.html" class="active">Membership</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="navbar__actions">
+      <a href="schedule.html" class="btn btn--green btn--sm">Book a Court →</a>
+    </div>
+    <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="nav-mobile">
+    <a href="index.html">Home</a>
+    <a href="schedule.html">Schedule & Booking</a>
+    <a href="coaching.html">Coaching</a>
+    <a href="facilities.html">Facilities</a>
+    <a href="membership.html">Membership</a>
+    <a href="contact.html">Contact</a>
+    <a href="schedule.html" class="btn btn--green mt-4">Book a Court →</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="mem-hero">
+  <div class="container" style="position:relative">
+    <span class="section-tag" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)">Membership Plans</span>
+    <h1>Play more,<br>Pay <span style="color:var(--pink)">less</span></h1>
+    <p>Join the Vista community and unlock exclusive rates, priority bookings, coaching access, and a whole lot more.</p>
+    <div class="mem-hero__stats">
+      <div class="mem-hero__stat">
+        <div class="mem-hero__stat-num">2<span>K+</span></div>
+        <div class="mem-hero__stat-label">Active Members</div>
+      </div>
+      <div class="mem-hero__stat">
+        <div class="mem-hero__stat-num">10<span>%</span></div>
+        <div class="mem-hero__stat-label">Court Discount</div>
+      </div>
+      <div class="mem-hero__stat">
+        <div class="mem-hero__stat-num">0</div>
+        <div class="mem-hero__stat-label">Joining Fee</div>
+      </div>
+      <div class="mem-hero__stat">
+        <div class="mem-hero__stat-num">∞</div>
+        <div class="mem-hero__stat-label">Cancel Anytime</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MARQUEE ── -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="marquee-dot"></span>Priority Booking</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Court Discounts</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Free Racket Rental</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Member Events</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Locker Access</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Cancel Anytime</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Priority Booking</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Court Discounts</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Free Racket Rental</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Member Events</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Locker Access</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Cancel Anytime</span>
+  </div>
+</div>
+
+<!-- ── PLANS ── -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag section-tag--pink">Choose Your Plan</span>
+      <h2 class="section-title">Simple, transparent pricing</h2>
+      <p class="section-desc">No hidden fees. No complicated tiers. Just three clear plans to suit your padel lifestyle.</p>
+    </div>
+    <div class="membership__grid">
+
+      <!-- Casual -->
+      <div class="mem-card">
+        <div class="mem-card__tag">Casual</div>
+        <div class="mem-card__name">Drop-In</div>
+        <p class="mem-card__desc">No commitment — perfect for occasional players or those just trying padel for the first time.</p>
+        <div class="mem-card__price">Pay As<br>You Go</div>
+        <div class="mem-card__period">Per session · No monthly fee</div>
+        <div class="mem-feats">
+          <div class="mem-feat"><svg viewBox="0 0 16 16" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="2,9 6,13 14,4"/></svg> Court access at standard rates</div>
+          <div class="mem-feat"><svg viewBox="0 0 16 16" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="2,9 6,13 14,4"/></svg> Equipment rental available</div>
+          <div class="mem-feat"><svg viewBox="0 0 16 16" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="2,9 6,13 14,4"/></svg> WhatsApp booking flow</div>
+          <div class="mem-feat"><svg viewBox="0 0 16 16" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="2,9 6,13 14,4"/></svg> Access to all 5 courts</div>
+          <div class="mem-feat" style="opacity:.4"><svg viewBox="0 0 16 16" fill="none" stroke="var(--gray-400)" stroke-width="2"><line x1="3" y1="3" x2="13" y2="13"/><line x1="13" y1="3" x2="3" y2="13"/></svg> No member discounts</div>
+          <div class="mem-feat" style="opacity:.4"><svg viewBox="0 0 16 16" fill="none" stroke="var(--gray-400)" stroke-width="2"><line x1="3" y1="3" x2="13" y2="13"/><line x1="13" y1="3" x2="3" y2="13"/></svg> No priority booking</div>
+          <div class="mem-feat" style="opacity:.4"><svg viewBox="0 0 16 16" fill="none" stroke="var(--gray-400)" stroke-width="2"><line x1="3" y1="3" x2="13" y2="13"/><line x1="13" y1="3" x2="3" y2="13"/></svg> No locker assignment</div>
+        </div>
+        <a href="schedule.html" class="btn btn--outline-green" style="width:100%;justify-content:center">Book a Session →</a>
+      </div>
+
+      <!-- Monthly Member (Featured) -->
+      <div class="mem-card mem-card--featured">
+        <div class="mem-card__badge">Most Popular</div>
+        <div class="mem-card__tag">Monthly Member</div>
+        <div class="mem-card__name">Vista Member</div>
+        <p class="mem-card__desc">The ideal plan for regular players who want the full Vista experience with great savings.</p>
+        <div class="mem-card__price">Rp 750K</div>
+        <div class="mem-card__period">Per month · Billed monthly · Cancel anytime</div>
+        <div class="mem-feats">
+          <div class="mem-feat"><svg viewBox="0 0 16 16" fill="none" stroke="var(--pink)" stroke-width="2"><polyline points="2,9 6,13 14,4"/></svg> <strong>10% off</strong> all court bookings</div>
+          <div class="mem-feat"><svg viewBox="0 0 16 16" fill="none" stroke="var(--pink)" stroke-width="2"><polyline points="2,9 6,13 14,4"/></svg> Priority slot reservation (48h early access)</div>
+          <div class="mem-feat"><svg viewBox="0 0 16 16" fill="none" stroke="var(--pink)" stroke-width="2"><polyline points="2,9 6,13 14,4"/></svg> Free racket rental 2× per month</div>
+          <div class="mem-feat"><svg viewBox="0 0 16 16" fill="none" stroke="var(--pink)" stroke-width="2"><polyline points="2,9 6,13 14,4"/></svg> Dedicated locker assignment</div>
+          <div class="mem-feat"><svg viewBox="0 0 16 16" fill="none" stroke="var(--pink)" stroke-width="2"><polyline points="2,9 6,13 14,4"/></svg> Invite to member-only events</div>
+          <div class="mem-feat"><svg viewBox="0 0 16 16" fill="none" stroke="var(--pink)" stroke-width="2"><polyline points="2,9 6,13 14,4"/></svg> Monthly social match night</div>
+          <div class="mem-feat"><svg viewBox="0 0 16 16" fill="none" stroke="var(--pink)" stroke-width="2"><polyline points="2,9 6,13 14,4"/></svg> Pro Shop member discount 5%</div>
+        </div>
+        <a href="#join-section" class="btn btn--pink" style="width:100%;justify-content:center">Join Now →</a>
+      </div>
+
+      <!-- Training Pack -->
+      <div class="mem-card">
+        <div class="mem-card__tag">Coaching Package</div>
+        <div class="mem-card__name">Training Pack</div>
+        <p class="mem-card__desc">For players serious about improving — combines full membership with regular coaching sessions.</p>
+        <div class="mem-card__price">Rp 1.2M</div>
+        <div class="mem-card__period">Per month · 4 sessions included · Cancel anytime</div>
+        <div class="mem-feats">
+          <div class="mem-feat"><svg viewBox="0 0 16 16" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="2,9 6,13 14,4"/></svg> Everything in Vista Member</div>
+          <div class="mem-feat"><svg viewBox="0 0 16 16" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="2,9 6,13 14,4"/></svg> <strong>4 coaching sessions/month</strong></div>
+          <div class="mem-feat"><svg viewBox="0 0 16 16" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="2,9 6,13 14,4"/></svg> Video analysis included</div>
+          <div class="mem-feat"><svg viewBox="0 0 16 16" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="2,9 6,13 14,4"/></svg> <strong>15% off</strong> all court bookings</div>
+          <div class="mem-feat"><svg viewBox="0 0 16 16" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="2,9 6,13 14,4"/></svg> Free racket rental unlimited</div>
+          <div class="mem-feat"><svg viewBox="0 0 16 16" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="2,9 6,13 14,4"/></svg> Monthly progress report from coach</div>
+          <div class="mem-feat"><svg viewBox="0 0 16 16" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="2,9 6,13 14,4"/></svg> Pro Shop discount 10%</div>
+        </div>
+        <a href="#join-section" class="btn btn--outline-green" style="width:100%;justify-content:center">Get Started →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMPARE TABLE ── -->
+<section class="section--sm" style="background:var(--cream)">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Full Comparison</span>
+      <h2 class="section-title">What's included</h2>
+    </div>
+    <div style="overflow-x:auto;border-radius:var(--r-lg);border:1px solid var(--gray-200);background:var(--white)">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th style="min-width:200px">Feature</th>
+            <th style="min-width:130px">Drop-In</th>
+            <th class="col-featured" style="min-width:150px">Vista Member<br><span style="color:var(--pink);font-size:.7rem">Rp 750K/mo</span></th>
+            <th style="min-width:150px">Training Pack<br><span style="color:var(--gray-500);font-size:.7rem">Rp 1.2M/mo</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="feat-col">Court Access<small>All 5 courts</small></td>
+            <td><span class="check-yes">✓</span></td>
+            <td class="col-featured"><span class="check-yes">✓</span></td>
+            <td><span class="check-yes">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat-col">Court Booking Discount</td>
+            <td><span class="check-no">—</span></td>
+            <td class="col-featured"><span class="check-val">10%</span></td>
+            <td><span class="check-val">15%</span></td>
+          </tr>
+          <tr>
+            <td class="feat-col">Priority Booking Window<small>Early access to slots</small></td>
+            <td><span class="check-no">—</span></td>
+            <td class="col-featured"><span class="check-val">48 hrs early</span></td>
+            <td><span class="check-val">72 hrs early</span></td>
+          </tr>
+          <tr>
+            <td class="feat-col">Racket Rental</td>
+            <td><span class="check-val">Rp 30K/use</span></td>
+            <td class="col-featured"><span class="check-val">2× free/mo</span></td>
+            <td><span class="check-val">Unlimited free</span></td>
+          </tr>
+          <tr>
+            <td class="feat-col">Locker Assignment<small>Dedicated locker</small></td>
+            <td><span class="check-no">—</span></td>
+            <td class="col-featured"><span class="check-yes">✓</span></td>
+            <td><span class="check-yes">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat-col">Coaching Sessions<small>Per month</small></td>
+            <td><span class="check-no">—</span></td>
+            <td class="col-featured"><span class="check-no">—</span></td>
+            <td><span class="check-val">4 sessions</span></td>
+          </tr>
+          <tr>
+            <td class="feat-col">Video Analysis</td>
+            <td><span class="check-no">—</span></td>
+            <td class="col-featured"><span class="check-no">—</span></td>
+            <td><span class="check-yes">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat-col">Member Events Access</td>
+            <td><span class="check-no">—</span></td>
+            <td class="col-featured"><span class="check-yes">✓</span></td>
+            <td><span class="check-yes">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat-col">Monthly Social Match Night</td>
+            <td><span class="check-no">—</span></td>
+            <td class="col-featured"><span class="check-yes">✓</span></td>
+            <td><span class="check-yes">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat-col">Pro Shop Discount</td>
+            <td><span class="check-no">—</span></td>
+            <td class="col-featured"><span class="check-val">5%</span></td>
+            <td><span class="check-val">10%</span></td>
+          </tr>
+          <tr>
+            <td class="feat-col">Monthly Progress Report</td>
+            <td><span class="check-no">—</span></td>
+            <td class="col-featured"><span class="check-no">—</span></td>
+            <td><span class="check-yes">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feat-col">Cancel Anytime</td>
+            <td><span class="check-yes">✓</span></td>
+            <td class="col-featured"><span class="check-yes">✓</span></td>
+            <td><span class="check-yes">✓</span></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><a href="schedule.html" class="btn btn--outline-green btn--sm">Book Now</a></td>
+            <td class="col-featured"><a href="#join-section" class="btn btn--pink btn--sm">Join Now</a></td>
+            <td><a href="#join-section" class="btn btn--outline-green btn--sm">Get Started</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ── JOIN FORM ── -->
+<section class="section" id="join-section">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
+      <div>
+        <span class="section-tag section-tag--pink">Join Vista</span>
+        <h2>Become a member<br>today</h2>
+        <p style="margin:16px 0 32px">Membership is processed manually via WhatsApp — fill in your details and we'll reach out within 24 hours to confirm your plan and arrange payment.</p>
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="width:36px;height:36px;border-radius:var(--r-sm);background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0">1️⃣</div>
+            <div>
+              <div style="font-family:var(--font-head);font-weight:700;color:var(--black);margin-bottom:3px;font-size:.9rem">Fill the form</div>
+              <p style="font-size:.82rem">Tell us your name, contact, and preferred plan.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="width:36px;height:36px;border-radius:var(--r-sm);background:var(--pink-light);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0">2️⃣</div>
+            <div>
+              <div style="font-family:var(--font-head);font-weight:700;color:var(--black);margin-bottom:3px;font-size:.9rem">We contact you</div>
+              <p style="font-size:.82rem">Our team will reach out within 24 hours via WhatsApp to confirm your membership.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="width:36px;height:36px;border-radius:var(--r-sm);background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0">3️⃣</div>
+            <div>
+              <div style="font-family:var(--font-head);font-weight:700;color:var(--black);margin-bottom:3px;font-size:.9rem">Start playing</div>
+              <p style="font-size:.82rem">Payment confirmed, your member benefits are activated instantly. Welcome to Vista!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="join-form">
+        <h3>Register Your Interest</h3>
+        <p>Select a plan and we'll set you up via WhatsApp.</p>
+
+        <div style="margin-bottom:18px">
+          <div style="font-family:var(--font-head);font-size:.78rem;font-weight:700;color:var(--gray-900);margin-bottom:10px;letter-spacing:.01em">Select Your Plan</div>
+          <div class="plan-selector">
+            <div class="plan-opt" onclick="selectPlan(this,'Drop-In')">
+              <div class="plan-opt__name">Drop-In</div>
+              <div class="plan-opt__price">Pay as you go</div>
+            </div>
+            <div class="plan-opt selected" onclick="selectPlan(this,'Vista Member')">
+              <div class="plan-opt__name">Vista Member</div>
+              <div class="plan-opt__price">Rp 750K / month</div>
+            </div>
+            <div class="plan-opt" onclick="selectPlan(this,'Training Pack')">
+              <div class="plan-opt__name">Training Pack</div>
+              <div class="plan-opt__price">Rp 1.2M / month</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="mem-name">Full Name *</label>
+            <input class="form-input" id="mem-name" type="text" placeholder="Your full name" required/>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="mem-wa">WhatsApp Number *</label>
+            <input class="form-input" id="mem-wa" type="tel" placeholder="08123456789" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="mem-email">Email Address (Optional)</label>
+          <input class="form-input" id="mem-email" type="email" placeholder="your@email.com"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="mem-level">Your Padel Level</label>
+          <select class="form-select" id="mem-level">
+            <option value="Beginner">Beginner — Never played or just starting</option>
+            <option value="Intermediate">Intermediate — Can sustain rallies</option>
+            <option value="Advanced">Advanced — Competitive / tournament player</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="mem-notes">Any Questions? (Optional)</label>
+          <textarea class="form-textarea" id="mem-notes" placeholder="Ask us anything about membership..."></textarea>
+        </div>
+        <button class="btn btn--green" style="width:100%;justify-content:center" onclick="submitMembership()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.885 3.488"/></svg>
+          Send via WhatsApp →
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="section--sm" style="background:var(--cream)">
+  <div class="container" style="max-width:720px">
+    <div class="section-header">
+      <span class="section-tag">FAQ</span>
+      <h2 class="section-title">Common questions</h2>
+    </div>
+    <div id="faq-list">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span class="faq-q-text">Is there a joining fee?</span><span class="faq-icon">+</span></div>
+        <div class="faq-a">No joining fee, ever. You simply pay the monthly plan rate and your membership is active. Cancel anytime with no penalty.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span class="faq-q-text">How do I cancel my membership?</span><span class="faq-icon">+</span></div>
+        <div class="faq-a">Simply message us on WhatsApp at least 7 days before your next billing cycle and we'll cancel it — no questions asked, no fees, no hassle.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span class="faq-q-text">How does priority booking work?</span><span class="faq-icon">+</span></div>
+        <div class="faq-a">Vista Members get 48-hour early access to booking slots before they open to the public. Training Pack members get 72-hour early access. This means peak hours (17:00–22:00) are almost always available to members first.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span class="faq-q-text">Can I share my membership with someone?</span><span class="faq-icon">+</span></div>
+        <div class="faq-a">Memberships are individual and non-transferable. However, you can always bring guests to play with you — guest court fees apply at standard rates.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span class="faq-q-text">What payment methods are accepted?</span><span class="faq-icon">+</span></div>
+        <div class="faq-a">We accept bank transfer (BCA, Mandiri, BNI), GoPay, OVO, and DANA. Payment details are confirmed via WhatsApp after your membership application is reviewed.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span class="faq-q-text">Do coaching sessions in the Training Pack expire?</span><span class="faq-icon">+</span></div>
+        <div class="faq-a">The 4 monthly coaching sessions must be used within the calendar month. Unused sessions do not roll over to the next month, so we recommend scheduling early!</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span class="faq-q-text">Are member events free?</span><span class="faq-icon">+</span></div>
+        <div class="faq-a">Most member events — including the monthly social match night — are free for all Vista Members and Training Pack holders. Special tournament events may have a small entry fee.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-banner__inner">
+      <span class="section-tag" style="background:rgba(255,255,255,.1);color:rgba(255,255,255,.7)">Join Today</span>
+      <h2>Ready to become<br>a Vista Member?</h2>
+      <p>Chat with us on WhatsApp — we'll get you set up within 24 hours.</p>
+      <div class="cta-banner__actions">
+        <a href="#join-section" class="btn btn--pink btn--lg">Apply for Membership →</a>
+        <a href="schedule.html" class="btn btn--outline btn--lg" style="border-color:rgba(255,255,255,.3);color:var(--white)">Book a Court First</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__bottom">
+      <div class="footer__copy">© 2026 Vista Padel Club · <a href="index.html" style="color:var(--green)">Back to Home</a></div>
+      <div class="footer__legal"><a href="schedule.html">Book a Court</a><a href="contact.html">Contact</a></div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/6281234567890" target="_blank" class="wa-fab" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.885 3.488"/></svg>
+</a>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+let selectedPlanName = 'Vista Member';
+
+function selectPlan(el, name) {
+  document.querySelectorAll('.plan-opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedPlanName = name;
+}
+
+function toggleFaq(el) {
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(f => f.classList.remove('open'));
+  if (!isOpen) el.classList.add('open');
+}
+
+function submitMembership() {
+  const name  = document.getElementById('mem-name')?.value.trim();
+  const wa    = document.getElementById('mem-wa')?.value.trim();
+  const email = document.getElementById('mem-email')?.value.trim();
+  const level = document.getElementById('mem-level')?.value;
+  const notes = document.getElementById('mem-notes')?.value.trim();
+
+  if (!name || !wa) { alert('Please fill in your name and WhatsApp number.'); return; }
+
+  const prices = { 'Drop-In': 'Pay as you go', 'Vista Member': 'Rp 750.000/bulan', 'Training Pack': 'Rp 1.200.000/bulan' };
+
+  const msg = [
+    `Halo ${CONFIG.businessName} 👋`,
+    ``,
+    `Saya ingin mendaftar sebagai *Member Vista Padel Club*:`,
+    ``,
+    `👤 *Nama:* ${name}`,
+    `📱 *WhatsApp:* ${wa}`,
+    email ? `📧 *Email:* ${email}` : null,
+    `🏅 *Plan yang dipilih:* ${selectedPlanName} (${prices[selectedPlanName] || ''})`,
+    `🎯 *Level Padel:* ${level}`,
+    notes ? `📝 *Pertanyaan:* ${notes}` : null,
+    ``,
+    `Mohon konfirmasi ketersediaan dan informasi pembayaran. Terima kasih! 🙏`,
+  ].filter(l => l !== null).join('\n');
+
+  const url = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank');
+}
+</script>
+</body>
+</html>

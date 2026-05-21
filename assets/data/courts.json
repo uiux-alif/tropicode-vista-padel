@@ -1,0 +1,52 @@
+[
+  {
+    "id": "courtA",
+    "name": "Court A",
+    "type": "Indoor Premium",
+    "surface": "Artificial Grass",
+    "lighting": "LED Professional",
+    "capacity": "4 Players",
+    "badge": "Most Popular",
+    "features": ["Air Conditioned", "Professional Glass Walls", "LED Lighting", "Scoreboard"]
+  },
+  {
+    "id": "courtB",
+    "name": "Court B",
+    "type": "Indoor Standard",
+    "surface": "Artificial Grass",
+    "lighting": "LED Professional",
+    "capacity": "4 Players",
+    "badge": null,
+    "features": ["Air Conditioned", "Glass Walls", "LED Lighting"]
+  },
+  {
+    "id": "courtC",
+    "name": "Court C",
+    "type": "Semi-Indoor",
+    "surface": "Artificial Grass",
+    "lighting": "LED Standard",
+    "capacity": "4 Players",
+    "badge": null,
+    "features": ["Ventilated", "Partial Glass Walls", "LED Lighting"]
+  },
+  {
+    "id": "courtIndoor",
+    "name": "The Arena",
+    "type": "Indoor VIP",
+    "surface": "Panoramic Turf",
+    "lighting": "Stadium LED",
+    "capacity": "4 Players",
+    "badge": "VIP",
+    "features": ["Full AC", "Panoramic Glass", "Stadium Lighting", "Camera System", "Lounge Access"]
+  },
+  {
+    "id": "courtOutdoor",
+    "name": "Open Court",
+    "type": "Outdoor",
+    "surface": "Synthetic Turf",
+    "lighting": "Floodlights",
+    "capacity": "4 Players",
+    "badge": null,
+    "features": ["Floodlights", "Shaded Seating", "Open Air", "Scenic View"]
+  }
+]

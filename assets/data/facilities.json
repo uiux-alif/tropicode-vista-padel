@@ -1,0 +1,10 @@
+[
+  { "id": "shower",   "name": "Shower Rooms",     "description": "Hot water, private cubicles and luxury amenities to freshen up post-match.",    "icon": "shower" },
+  { "id": "locker",   "name": "Locker Rooms",     "description": "Secure digital-lock lockers — leave your valuables worry-free while you play.", "icon": "lock" },
+  { "id": "cafe",     "name": "Café & Lounge",    "description": "Post-match drinks, light bites, and social vibes in our stylish in-club café.",  "icon": "cafe" },
+  { "id": "parking",  "name": "Parking Area",     "description": "Ample, secure parking for cars and motorcycles — complimentary with booking.",   "icon": "parking" },
+  { "id": "rental",   "name": "Equipment Rental", "description": "High-quality padel rackets and balls available for rent at the front desk.",      "icon": "racket" },
+  { "id": "proshop",  "name": "Pro Shop",         "description": "Premium padel gear, apparel and accessories from top-tier brands.",               "icon": "shop" },
+  { "id": "wifi",     "name": "Free WiFi",        "description": "High-speed WiFi throughout the club — stream, share, and stay connected.",         "icon": "wifi" },
+  { "id": "changing", "name": "Changing Rooms",   "description": "Spacious, spotless changing rooms with full-length mirrors and premium fixtures.", "icon": "changing" }
+]

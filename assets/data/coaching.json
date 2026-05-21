@@ -1,0 +1,38 @@
+[
+  {
+    "id": "coach1",
+    "name": "Marco Alvarez",
+    "title": "Head Coach",
+    "specialty": "Competitive & Advanced",
+    "experience": "12 Years",
+    "certifications": ["WPT Certified", "FIP Level 3"],
+    "programs": [
+      { "name": "Private Coaching", "duration": "60 min", "price": 400000, "level": "All Levels" },
+      { "name": "Advanced Clinic",  "duration": "90 min", "price": 250000, "level": "Intermediate+" }
+    ]
+  },
+  {
+    "id": "coach2",
+    "name": "Sarah Tan",
+    "title": "Junior & Beginner Coach",
+    "specialty": "Beginners & Kids",
+    "experience": "7 Years",
+    "certifications": ["FIP Level 2", "Youth Sports Certified"],
+    "programs": [
+      { "name": "Beginner Coaching", "duration": "60 min", "price": 250000, "level": "Beginner" },
+      { "name": "Kids Padel Class",  "duration": "60 min", "price": 200000, "level": "Kids 8–14" }
+    ]
+  },
+  {
+    "id": "coach3",
+    "name": "Rafi Putra",
+    "title": "Group & Social Coach",
+    "specialty": "Group Sessions & Fitness",
+    "experience": "5 Years",
+    "certifications": ["FIP Level 1", "Sports Fitness Certified"],
+    "programs": [
+      { "name": "Group Session",       "duration": "90 min", "price": 150000, "level": "All Levels" },
+      { "name": "Intermediate Clinic", "duration": "90 min", "price": 200000, "level": "Intermediate" }
+    ]
+  }
+]
